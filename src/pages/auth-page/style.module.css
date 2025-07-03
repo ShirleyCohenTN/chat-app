@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, #f0f4f8, #d9e2ec);
-  padding: 16px;
+  padding: 15px;
 }
 
 .form {
@@ -24,34 +24,50 @@
 .form input {
   width: 100%;
   padding: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .form button {
   width: 100%;
   padding: 12px;
-  font-size: 16px;
-  background-color: #1976d2;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #7956df;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 24px;
   cursor: pointer;
 }
 
 .form button:hover {
-  background-color: #1565c0;
+  background-color: #603fc0;
+}
+
+button:disabled {
+  background-color: #d1cfd7;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .toggle {
-  margin-top: 16px;
+  margin-top: 15px;
   text-align: center;
-  color: #1976d2;
+  font-size: 16px;
+}
+
+.text {
+  color: #888888;
+}
+
+.link {
+  color: #7956df;
   cursor: pointer;
-  font-size: 14px;
   text-decoration: underline;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .error {
@@ -59,6 +75,13 @@
   font-size: 14px;
   margin-bottom: 12px;
   text-align: center;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px; /* optional spacing */
 }
 
 @media (max-width: 600px) {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks";
+import { LogoIcon } from "../../assets";
 import styles from "./style.module.css";
 
 export const AuthPage = () => {
@@ -7,6 +8,7 @@ export const AuthPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const isFormInvalid = !username.trim() || !password.trim();
 
   const { login, register } = useAuth();
 
@@ -37,6 +39,10 @@ export const AuthPage = () => {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.logoWrapper}>
+          <LogoIcon />
+        </div>
+
         <h2>{isLoginMode ? "Login" : "Register"}</h2>
 
         <input
@@ -57,12 +63,26 @@ export const AuthPage = () => {
 
         {error && <div className={styles.error}>{error}</div>}
 
-        <button type="submit">{isLoginMode ? "Login" : "Register"}</button>
+        <button type="submit" disabled={isFormInvalid}>
+          {isLoginMode ? "Login" : "Register"}
+        </button>
 
-        <p className={styles.toggle} onClick={toggleMode}>
-          {isLoginMode
-            ? "Don't have an account? Register"
-            : "Already have an account? Login"}
+        <p className={styles.toggle}>
+          {isLoginMode ? (
+            <>
+              <span className={styles.text}>Don't have an account? </span>
+              <span onClick={toggleMode} className={styles.link}>
+                Register
+              </span>
+            </>
+          ) : (
+            <>
+              <span className={styles.text}>Already have an account? </span>
+              <span onClick={toggleMode} className={styles.link}>
+                Login
+              </span>
+            </>
+          )}
         </p>
       </form>
     </div>
