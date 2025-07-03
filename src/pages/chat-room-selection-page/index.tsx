@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEYS } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../../components";
 import styles from "./style.module.css";
 
 export const ChatRoomSelectionPage = () => {
@@ -45,19 +46,32 @@ export const ChatRoomSelectionPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Select or Create a Chat Room</h2>
+        <Header />
 
-        <ul className={styles.roomList}>
-          {rooms.map((room) => (
-            <li
-              key={room}
-              className={styles.roomItem}
-              onClick={() => handleJoinRoom(room)}
-            >
-              {room}
-            </li>
-          ))}
-        </ul>
+        <h2 className={styles.title}>Select a Chat Room</h2>
+
+        {rooms && rooms.length > 0 ? (
+          <>
+            <h3>Rooms:</h3>
+            <ul className={styles.roomList}>
+              {rooms.map((room) => (
+                <li
+                  key={room}
+                  className={styles.roomItem}
+                  onClick={() => handleJoinRoom(room)}
+                >
+                  {room}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <p>There are no chat rooms available yet.</p>
+        )}
+
+        <hr className={styles.divider} />
+
+        <h2 className={styles.title}>Create a Chat Room</h2>
 
         <div className={styles.inputGroup}>
           <input

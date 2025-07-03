@@ -1,0 +1,45 @@
+.header {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto 24px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Helvetica", sans-serif;
+  flex-wrap: wrap; /* only wrap if absolutely necessary */
+  gap: 8px;
+}
+
+.userInfo {
+  font-size: 16px;
+  color: #472f47;
+  font-weight: 600;
+  white-space: nowrap; /* prevent line break */
+}
+
+.logoutButton {
+  padding: 8px 16px;
+  background-color: #7956df;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.logoutButton:hover {
+  background-color: #603fc0;
+}
+
+@media (max-width: 480px) {
+  .header {
+    justify-content: space-between;
+  }
+}

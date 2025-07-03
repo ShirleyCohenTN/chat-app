@@ -87,6 +87,14 @@
   margin-top: 8px;
 }
 
+.divider {
+  margin: 32px 0;
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  width: 100%;
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 24px 20px;
