@@ -1,0 +1,68 @@
+.wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.chatBox {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 15px;
+  color: #222;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.inputGroup input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.inputGroup button {
+  padding: 10px 16px;
+  background-color: #7956df;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.inputGroup button:hover {
+  background-color: #603fc0;
+}
+
+.leaveButton {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.leaveButton:hover {
+  background-color: #c0392b;
+}

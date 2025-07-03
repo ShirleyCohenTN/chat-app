@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.userInfo}>
-        <span>👤 {currentUser}</span>
+        <span> {currentUser}</span>
       </div>
       <button onClick={logout} className={styles.logoutButton}>
         Logout
