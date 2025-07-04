@@ -12,18 +12,20 @@ export const ChatRoomPage = () => {
   const username = getCurrentUser() || "";
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
-  const broadcastRef = useRef<BroadcastChannel | null>(null);
-  const messageEndRef = useRef<HTMLDivElement | null>(null);
+  const broadcastRef = useRef<BroadcastChannel | null>(null); // stores the BroadcastChannel object (used to sync tabs)
+  const messageEndRef = useRef<HTMLDivElement | null>(null); // scrolls to the bottom of the chat
+
+  const roomKey = `chat:${roomName}`;
 
   useEffect(() => {
-    const key = `chat:${roomName}`;
     const storedMessages = JSON.parse(
-      localStorage.getItem(key) || "[]"
+      localStorage.getItem(roomKey) || "[]"
     ) as Message[];
     setMessages(storedMessages);
 
+    // open a broadcast channel, named per room (real time communication channel, for different tabs of the same origin)
     const bc = new BroadcastChannel(`chat-room-${roomName}`);
-    broadcastRef.current = bc;
+    broadcastRef.current = bc; 
 
     bc.onmessage = (event) => {
       if (event.data.type === "new-message") {
@@ -34,7 +36,7 @@ export const ChatRoomPage = () => {
     return () => {
       bc.close();
     };
-  }, [roomName]);
+  }, [roomName, roomKey]);
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,9 +50,8 @@ export const ChatRoomPage = () => {
       timestamp: Date.now(),
     };
 
-    const key = `chat:${roomName}`;
     const updatedMsgs = [...messages, msg];
-    localStorage.setItem(key, JSON.stringify(updatedMsgs));
+    localStorage.setItem(roomKey, JSON.stringify(updatedMsgs));
     setMessages(updatedMsgs);
     setNewMessage("");
 
