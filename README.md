@@ -67,6 +67,20 @@ This way, even if someone steals the database, they can’t see any real passwor
 After the user logs in, I would use a JWT (JSON Web Token) to keep them logged in.
 The token would be stored securely in the browser — usually in an HttpOnly cookie, or in localStorage if needed.
 
+### Peer-to-Peer Communication (without a backend)
+If I wanted to let two users chat directly between their browsers, without any backend, I would use the WebRTC API.\
+WebRTC allows browsers to connect to each other and send messages using a feature called RTCDataChannel.
+
+The main steps would be:
+- One user creates a connection and shares an “offer” (a special message)
+- The second user accepts it and replies with an “answer”
+
+Both users exchange “ICE candidates” (network info)
+=> This step is normally done using a server, but its possible to simulate it by copy-pasting the messages between the two users
+
+Once connected, they can send messages directly, in real time, without any server in the middle.
+
+I didn’t implement it and wasn’t very familiar with it before, but I took the time to research it and now understand how it works.
 
 
 
