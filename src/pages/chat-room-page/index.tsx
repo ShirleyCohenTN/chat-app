@@ -25,7 +25,7 @@ export const ChatRoomPage = () => {
 
     // open a broadcast channel, named per room (real time communication channel, for different tabs of the same origin)
     const bc = new BroadcastChannel(`chat-room-${roomName}`);
-    broadcastRef.current = bc; 
+    broadcastRef.current = bc;
 
     bc.onmessage = (event) => {
       if (event.data.type === "new-message") {
