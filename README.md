@@ -48,6 +48,25 @@ Socket.IO would be a great fit for this chat app project because:
 On the frontend, I would use the Socket.IO client to emit and listen to message events.\
 On the backend (Node.js + Express), I’d set up a Socket.IO server to manage connections, handle chat rooms, and relay messages between users.
 
+### Security – How I would store user credentials
+In most of my projects, I used Auth0 for authentication, so I didn’t need to handle passwords myself.\
+But I’ve read about how it works under the hood, and if I had to build it myself, I would use a tool like bcrypt.
+
+Bcrypt is very popular and trusted for storing passwords safely. It:
+
+- Adds a random salt to each password (so two users with the same password get different hashes)
+- Makes it slow on purpose, which helps protect against hackers who try to guess passwords quickly
+
+Here’s how I would use it:
+
+1. When a user signs up, I hash the password with bcrypt and save only the hash in the database (not the real password)
+2. When the user logs in, I hash the entered password again and compare it to the stored one
+
+This way, even if someone steals the database, they can’t see any real passwords.
+
+After the user logs in, I would use a JWT (JSON Web Token) to keep them logged in.
+The token would be stored securely in the browser — usually in an HttpOnly cookie, or in localStorage if needed.
+
 
 
 
