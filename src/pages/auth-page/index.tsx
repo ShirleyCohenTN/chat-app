@@ -70,7 +70,7 @@ export const AuthPage = () => {
         <p className={styles.toggle}>
           {isLoginMode ? (
             <>
-              <span className={styles.text}>Don't have an account? </span>
+              <span className={styles.text}>Dont have an account? </span>
               <span onClick={toggleMode} className={styles.link}>
                 Register
               </span>
